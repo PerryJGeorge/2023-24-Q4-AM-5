@@ -7,6 +7,17 @@ public class BulletBox : MonoBehaviour
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
     Vector2 movement;
+    public Vector3 Startingpos;
+
+    void Start()
+    {
+        SetHeart();
+    }
+
+    public void SetHeart()
+    {
+        transform.position = Startingpos;
+    }
 
     void Update()
     {

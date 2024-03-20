@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class script2 : MonoBehaviour
+public class EnemyRPG : MonoBehaviour
 {
     public string EnemyName;
     public int enemyHP;
@@ -12,7 +12,7 @@ public class script2 : MonoBehaviour
     {
         enemyHP -= damage;
 
-        if(enemyHP <= 0)
+        if (enemyHP <= 0)
         {
             return true;
         }

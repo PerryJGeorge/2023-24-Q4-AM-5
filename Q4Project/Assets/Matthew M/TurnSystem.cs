@@ -15,42 +15,40 @@ public class TurnSystem : MonoBehaviour
     public Text PlayerText;
     public Text EnemyText;
     public Text NeutralText;
-    public KeyCode Attackbutton;
-    public KeyCode HealButton;
+    public bool isDead;
+    //public EnemyProfile[] EnemiesInBattle;
+    public GameObject[] EnemyAttacks;
+    public GameObject BulletBox;
+    public GameObject Heart;
+
     IEnumerator SetupBattle()
     {
         player.GetComponent<PlayerRPG>();
-        enemy.GetComponent<script2>();
+        enemy.GetComponent<EnemyRPG>();
         state = BattleState.PLAYERTURN;
         PlayerTurn();
 
         PlayerText.text = player.GetComponent<PlayerRPG>().PlayerName + " " + player.GetComponent<PlayerRPG>().currentHP;
-        EnemyText.text = enemy.GetComponent<script2>().EnemyName + " " + enemy.GetComponent<script2>().enemyHP;
+        EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + " " + enemy.GetComponent<EnemyRPG>().enemyHP;
 
         yield return new WaitForSeconds(1f);
 
         state = BattleState.PLAYERTURN;
+        BulletBox.SetActive(false);
+        Heart.SetActive(false);
         PlayerTurn();
     }
 
     void PlayerTurn()
     {
         NeutralText.text = "Choose an action.";
-        if (Input.GetKeyDown(Attackbutton))
-        {
-            OnAttack();
-        }
-        else if (Input.GetKeyDown(HealButton))
-        {
-
-        }
     }
     IEnumerator PlayerAttack()
     {
         yield return new WaitForSeconds(1f);
-        bool isDead = enemy.GetComponent<script2>().TakeDamage(player.GetComponent<PlayerRPG>().attack);
+        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().attack);
 
-        EnemyText.text = enemy.GetComponent<script2>().EnemyName + " " + enemy.GetComponent<script2>().enemyHP;
+        EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + " " + enemy.GetComponent<EnemyRPG>().enemyHP;
         NeutralText.text = "You attacked!";
 
         if (isDead)
@@ -67,11 +65,14 @@ public class TurnSystem : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        EnemyText.text = enemy.GetComponent<script2>().EnemyName + " Attacked!";
         yield return new WaitForSeconds(1f);
-        bool isDead = player.GetComponent<PlayerRPG>().TakeDamage(enemy.GetComponent<script2>().enemydamage);
-        PlayerText.text = player.GetComponent<PlayerRPG>().PlayerName + " " + player.GetComponent<PlayerRPG>().currentHP;
-        yield return new WaitForSeconds(1f);
+        //foreach(EnemyProfile emy in EnemiesInBattle)
+        //{
+        //    int AtkNumber = Random.Range(0, emy.EnemiesAttacks.Length);
+        //
+        //    Instantiate(emy.EnemiesAttacks[AtkNumber], Vector3.zero, Quaternion.identity);
+        //}
+        EnemyAttacks = GameObject.FindGameObjectsWithTag("Enemy");
         if (isDead)
         {
             state = BattleState.LOSE;
