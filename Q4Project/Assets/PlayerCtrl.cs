@@ -23,8 +23,8 @@ public class PlayerCtrl : MonoBehaviour
     void Update()
     {
 
-        speedX = Input.GetAxis.Raw("Horizontal") * movSpeed;
-        speedY = Input.GetAxis.Raw("Vertical") * movSpeed;
+        speedX = Input.GetAxisRaw("Horizontal") * movSpeed;
+        speedY = Input.GetAxisRaw("Vertical") * movSpeed;
         rb.velocity = new Vector2(speedX, speedY);
 
 
