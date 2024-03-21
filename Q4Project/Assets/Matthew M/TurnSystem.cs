@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WIN, LOSE }
 
@@ -20,28 +22,29 @@ public class TurnSystem : MonoBehaviour
     public GameObject[] EnemyAttacks;
     public GameObject BulletBox;
     public GameObject Heart;
+    public GameObject UI;
+    private int rando;
 
     IEnumerator SetupBattle()
     {
         player.GetComponent<PlayerRPG>();
         enemy.GetComponent<EnemyRPG>();
-        state = BattleState.PLAYERTURN;
-        PlayerTurn();
-
-        PlayerText.text = player.GetComponent<PlayerRPG>().PlayerName + " " + player.GetComponent<PlayerRPG>().currentHP;
-        EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + " " + enemy.GetComponent<EnemyRPG>().enemyHP;
-
-        yield return new WaitForSeconds(1f);
-
-        state = BattleState.PLAYERTURN;
         BulletBox.SetActive(false);
         Heart.SetActive(false);
+        PlayerText.text = player.GetComponent<PlayerRPG>().PlayerName + ": " + player.GetComponent<PlayerRPG>().currentHP;
+        EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
+
+        state = BattleState.PLAYERTURN;
+        yield return new WaitForSeconds(1f);
         PlayerTurn();
     }
 
     void PlayerTurn()
     {
-        NeutralText.text = "Choose an action.";
+        BulletBox.SetActive(false);
+        Heart.SetActive(false);
+        UI.SetActive(true);
+        NeutralText.text = "Choose an action:";
     }
     IEnumerator PlayerAttack()
     {
@@ -50,6 +53,7 @@ public class TurnSystem : MonoBehaviour
 
         EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + " " + enemy.GetComponent<EnemyRPG>().enemyHP;
         NeutralText.text = "You attacked!";
+        yield return new WaitForSeconds(1f);
 
         if (isDead)
         {
@@ -65,14 +69,18 @@ public class TurnSystem : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        yield return new WaitForSeconds(1f);
+        UI.SetActive(false);
+        BulletBox.SetActive(true);
+        Heart.SetActive(true);
+        yield return new WaitForSeconds(3f);
         //foreach(EnemyProfile emy in EnemiesInBattle)
         //{
         //    int AtkNumber = Random.Range(0, emy.EnemiesAttacks.Length);
         //
         //    Instantiate(emy.EnemiesAttacks[AtkNumber], Vector3.zero, Quaternion.identity);
         //}
-        EnemyAttacks = GameObject.FindGameObjectsWithTag("Enemy");
+        //EnemyAttacks = GameObject.FindGameObjectsWithTag("Enemy");
+
         if (isDead)
         {
             state = BattleState.LOSE;
@@ -104,8 +112,38 @@ public class TurnSystem : MonoBehaviour
             return;
         }
         StartCoroutine(PlayerAttack());
-
     }
+
+    public void OnSkills()
+    {
+        if (state != BattleState.PLAYERTURN)
+        {
+            return;
+        }
+    }
+
+    public void OnItem()
+    {
+        if (state != BattleState.PLAYERTURN)
+        {
+            return;
+        }
+    }
+
+    public void OnFlee()
+    {
+        if (state != BattleState.PLAYERTURN)
+        {
+            return;
+        }
+        StartCoroutine(PlayerFlee());
+    }
+
+    IEnumerator PlayerFlee()
+    {
+        yield return new WaitForSeconds(5f);
+    }
+
     void Start()
     {
         state = BattleState.START;
