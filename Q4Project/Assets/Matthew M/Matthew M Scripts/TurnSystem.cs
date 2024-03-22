@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
+using Random = UnityEngine.Random;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WIN, LOSE }
 
@@ -23,7 +25,6 @@ public class TurnSystem : MonoBehaviour
     public GameObject BulletBox;
     public GameObject Heart;
     public GameObject UI;
-    private int rando;
 
     IEnumerator SetupBattle()
     {
@@ -141,7 +142,20 @@ public class TurnSystem : MonoBehaviour
 
     IEnumerator PlayerFlee()
     {
-        yield return new WaitForSeconds(5f);
+        int loser = Random.Range(0, 100);
+        NeutralText.text = "You attempt to escape...";
+        yield return new WaitForSeconds(2f);
+        if (loser > 50 + (2 * player.GetComponent<PlayerRPG>().Eva))
+        {
+            NeutralText.text = "You escaped the battle!";
+            SceneManager.LoadScene("Ian Test Scene");
+        }
+        else
+        {
+            NeutralText.text = "You can't escape!";
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(EnemyTurn());
+        }
     }
 
     void Start()
