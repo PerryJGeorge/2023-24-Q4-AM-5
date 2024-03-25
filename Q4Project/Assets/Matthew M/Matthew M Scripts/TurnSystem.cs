@@ -45,6 +45,7 @@ public class TurnSystem : MonoBehaviour
         BulletBox.SetActive(false);
         Heart.SetActive(false);
         UI.SetActive(true);
+        PlayerText.text = player.GetComponent<PlayerRPG>().PlayerName + ": " + player.GetComponent<PlayerRPG>().currentHP;
         NeutralText.text = "Choose an action:";
     }
     IEnumerator PlayerAttack()
