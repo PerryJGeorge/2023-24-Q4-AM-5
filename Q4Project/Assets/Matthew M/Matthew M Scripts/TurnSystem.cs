@@ -25,6 +25,7 @@ public class TurnSystem : MonoBehaviour
     public GameObject BulletBox;
     public GameObject Heart;
     public GameObject UI;
+    public GameObject AttackAnim;
 
     IEnumerator SetupBattle()
     {
@@ -32,6 +33,7 @@ public class TurnSystem : MonoBehaviour
         enemy.GetComponent<EnemyRPG>();
         BulletBox.SetActive(false);
         Heart.SetActive(false);
+        AttackAnim.SetActive(false);
         PlayerText.text = player.GetComponent<PlayerRPG>().PlayerName + ": " + player.GetComponent<PlayerRPG>().currentHP;
         EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
 
@@ -45,6 +47,7 @@ public class TurnSystem : MonoBehaviour
         BulletBox.SetActive(false);
         Heart.SetActive(false);
         UI.SetActive(true);
+        AttackAnim.SetActive(false);
         PlayerText.text = player.GetComponent<PlayerRPG>().PlayerName + ": " + player.GetComponent<PlayerRPG>().currentHP;
         NeutralText.text = "Choose an action:";
     }
@@ -74,15 +77,8 @@ public class TurnSystem : MonoBehaviour
         UI.SetActive(false);
         BulletBox.SetActive(true);
         Heart.SetActive(true);
+        AttackAnim.SetActive(true);
         yield return new WaitForSeconds(3f);
-        //foreach(EnemyProfile emy in EnemiesInBattle)
-        //{
-        //    int AtkNumber = Random.Range(0, emy.EnemiesAttacks.Length);
-        //
-        //    Instantiate(emy.EnemiesAttacks[AtkNumber], Vector3.zero, Quaternion.identity);
-        //}
-        //EnemyAttacks = GameObject.FindGameObjectsWithTag("Enemy");
-
         if (isDead)
         {
             state = BattleState.LOSE;
