@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public GameObject attacker;
-    public GameObject target;
+    public PlayerRPG target;
+    public EnemyRPG enemyattack;
 
-    public void Attack()
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        //if (Collision.gameObject.name == 
+        target.TakeDamage(enemyattack.enemydamage);
     }
 }
