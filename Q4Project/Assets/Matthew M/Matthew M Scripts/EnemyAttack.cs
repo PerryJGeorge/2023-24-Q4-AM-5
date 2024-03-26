@@ -6,6 +6,9 @@ public class EnemyAttack : MonoBehaviour
 {
     public PlayerRPG target;
     public EnemyRPG enemyattack;
+    public GameObject Heart;
+    public bool isFrames = false;
+    public float IFrames;
 
     public void OnTriggerEnter2D(Collider2D collider)
     {

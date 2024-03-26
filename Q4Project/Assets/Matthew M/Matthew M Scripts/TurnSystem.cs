@@ -36,6 +36,7 @@ public class TurnSystem : MonoBehaviour
         AttackAnim.SetActive(false);
         PlayerText.text = player.GetComponent<PlayerRPG>().PlayerName + ": " + player.GetComponent<PlayerRPG>().currentHP;
         EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
+        NeutralText.text = enemy.GetComponent<EnemyRPG>().EnemyName + " Attacked!";
 
         state = BattleState.PLAYERTURN;
         yield return new WaitForSeconds(1f);
@@ -55,7 +56,6 @@ public class TurnSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().attack);
-
         EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + " " + enemy.GetComponent<EnemyRPG>().enemyHP;
         NeutralText.text = "You attacked!";
         yield return new WaitForSeconds(1f);
@@ -76,9 +76,11 @@ public class TurnSystem : MonoBehaviour
     {
         UI.SetActive(false);
         BulletBox.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
         Heart.SetActive(true);
         AttackAnim.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        Heart.GetComponent<BulletBox>().SetHeart();
+        yield return new WaitForSeconds(5f);
         if (isDead)
         {
             state = BattleState.LOSE;
