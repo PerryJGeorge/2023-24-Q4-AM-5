@@ -1,38 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCtrl : MonoBehaviour
 {
-
-
     public float movSpeed;
     float speedX, speedY;
-    Rigidbody2D rb; 
+    Rigidbody2D rb;
     private Animator animator;
-    p
+    private Vector2 moveInput;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Ainmator>();
+        animator = GetComponent<Animator>(); // Corrected typo in GetComponent<Animator>()
     }
 
-    public void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        animator.SetFloat("XInput", moveInput.x);
-        animator.SetFloat("XInput", moveInput.x);
+        moveInput = context.ReadValue<Vector2>();
+
+        if (moveInput != Vector2.zero)
+        {
+            animator.SetFloat("XInput", moveInput.x);
+            animator.SetFloat("YInput", moveInput.y);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        speedX = Input.GetAxisRaw("Horizontal") * movSpeed;
-        speedY = Input.GetAxisRaw("Vertical") * movSpeed;
+        speedX = moveInput.x * movSpeed; // Use moveInput.x instead of Input.GetAxisRaw("Horizontal")
+        speedY = moveInput.y * movSpeed; // Use moveInput.y instead of Input.GetAxisRaw("Vertical")
         rb.velocity = new Vector2(speedX, speedY);
-
-
     }
 }
