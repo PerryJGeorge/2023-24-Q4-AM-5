@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,15 +19,23 @@ public class TurnSystem : MonoBehaviour
     public GameObject enemy;
     public BattleState state;
     public Text PlayerText;
+    public GameObject PayerText;
     public Text EnemyText;
+    public GameObject EmemyText;
     public Text NeutralText;
-    public bool isDead;
-    //public EnemyProfile[] EnemiesInBattle;
-    public GameObject[] EnemyAttacks;
+    public GameObject NewtallText;
+    public TextMeshPro Skill1;
+    public TextMeshPro Skill2;
+    public TextMeshPro Skill3;
+    public TextMeshPro Skill4;
     public GameObject BulletBox;
     public GameObject Heart;
     public GameObject UI;
     public GameObject AttackAnim;
+    public PlayerRPG Billy;
+    public EnemyRPG badguy;
+    public bool cooldown;
+    public bool isDead;
 
     IEnumerator SetupBattle()
     {
@@ -111,7 +121,17 @@ public class TurnSystem : MonoBehaviour
         {
             return;
         }
-        StartCoroutine(PlayerAttack());
+        if (cooldown == false)
+        {
+            StartCoroutine(PlayerAttack());
+            Invoke("ResetCooldown", 3f);
+            cooldown = true;
+        }
+    }
+
+    public void ResetCooldown()
+    {
+        cooldown = false;
     }
 
     public void OnSkills()
@@ -119,6 +139,55 @@ public class TurnSystem : MonoBehaviour
         if (state != BattleState.PLAYERTURN)
         {
             return;
+        }
+        if (cooldown == false)
+        {
+            PlayerSkills();
+            Invoke("ResetCooldown", 3f);
+            cooldown = true;
+        }
+    }
+
+    public void PlayerSkills()
+    {
+        UI.SetActive(false);
+        NewtallText.SetActive(true);
+        EmemyText.SetActive(true);
+        PayerText.SetActive(true);
+        if (Billy.Level > 2)
+        {
+            Skill1.text = "LOCKED - LEVEL 2";
+            Skill2.text = "LOCKED - LEVEL 4";
+            Skill3.text = "LOCKED - LEVEL 6";
+            Skill4.text = "LOCKED - LEVEL 8";
+        }
+        else if (Billy.Level > 4)
+        {
+            Skill1.text = "Fresh Corn - 5 IQ";
+            Skill2.text = "LOCKED - LEVEL 4";
+            Skill3.text = "LOCKED - LEVEL 6";
+            Skill4.text = "LOCKED - LEVEL 8";
+        }
+        else if (Billy.Level > 6)
+        {
+            Skill1.text = "Fresh Corn - 5 IQ";
+            Skill2.text = "Billy Brawl - 10 IQ";
+            Skill3.text = "LOCKED - LEVEL 6";
+            Skill4.text = "LOCKED - LEVEL 8";
+        }
+        else if (Billy.Level > 8)
+        {
+            Skill1.text = "Fresh Corn - 5 IQ";
+            Skill2.text = "Billy Brawl - 10 IQ";
+            Skill3.text = "Intimidating Talk - 15 IQ";
+            Skill4.text = "LOCKED - LEVEL 8";
+        }
+        else
+        {
+            Skill1.text = "Fresh Corn - 5 IQ";
+            Skill2.text = "Billy Brawl - 10 IQ";
+            Skill3.text = "Intimidating Talk - 15 IQ";
+            Skill4.text = "Truck of Doom - 20 IQ";
         }
     }
 
@@ -136,7 +205,12 @@ public class TurnSystem : MonoBehaviour
         {
             return;
         }
-        StartCoroutine(PlayerFlee());
+        if (cooldown == false)
+        {
+            StartCoroutine(PlayerFlee());
+            Invoke("ResetCooldown", 3f);
+            cooldown = true;
+        }
     }
 
     IEnumerator PlayerFlee()

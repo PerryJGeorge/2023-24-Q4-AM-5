@@ -12,15 +12,11 @@ public class PlayerRPG : MonoBehaviour
     public int EXP;
     public int Dollars;
     public int Eva;
-    private int Level = 1;
-    public EnemyAttack atak;
+    public int Level = 1;
 
     public bool TakeDamage(int enemydamage)
     {
-        if (atak.isFrames)
-        {
-            currentHP -= enemydamage;
-        }
+        currentHP -= enemydamage;
         if (currentHP <= 0)
         {
             return true;
