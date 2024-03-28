@@ -22,11 +22,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
 
-        if (moveInput != Vector2.zero)
-        {
             animator.SetFloat("XInput", moveInput.x);
             animator.SetFloat("YInput", moveInput.y);
-        }
     }
 
     // Update is called once per frame
