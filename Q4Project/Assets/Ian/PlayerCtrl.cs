@@ -21,7 +21,7 @@ public class PlayerCtrl : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-
+ 
         if (moveInput != Vector2.zero)
         {
             animator.SetFloat("XInput", moveInput.x);
