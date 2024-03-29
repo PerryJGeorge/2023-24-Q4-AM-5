@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Ink_Slide : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject player;
+    public float a;
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        a = player.GetComponent<Rigidbody2D>().sharedMaterial.friction;
+        player.GetComponent<Rigidbody2D>().sharedMaterial.friction = 0;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        player.GetComponent<Rigidbody2D>().sharedMaterial.friction = a;
     }
 }

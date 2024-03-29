@@ -7,6 +7,8 @@ public class PlayerRPG : MonoBehaviour
     public string PlayerName;
     public int MaxHP;
     public int currentHP;
+    public int currentIQ;
+    public int maxIQ;
     public int attack;
     public int defense;
     public int EXP;
