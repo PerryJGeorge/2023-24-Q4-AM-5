@@ -48,7 +48,7 @@ public class TurnSystem : MonoBehaviour
         BulletBox.SetActive(false);
         Heart.SetActive(false);
         AttackAnim.SetActive(false);
-        PlayerText.text = player.GetComponent<PlayerRPG>().PlayerName + ": " + player.GetComponent<PlayerRPG>().currentHP;
+        PlayerText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
         NeutralText.text = enemy.GetComponent<EnemyRPG>().EnemyName + " Attacked!";
 
@@ -63,13 +63,15 @@ public class TurnSystem : MonoBehaviour
         Heart.SetActive(false);
         UI.SetActive(true);
         AttackAnim.SetActive(false);
-        PlayerText.text = player.GetComponent<PlayerRPG>().PlayerName + ": " + player.GetComponent<PlayerRPG>().currentHP;
+        SkillsMenu.SetActive(false);
+        PlayerText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
         NeutralText.text = "Choose an action: ";
     }
     IEnumerator PlayerAttack()
     {
         yield return new WaitForSeconds(1f);
-        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().attack);
+        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().strength);
         EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
         NeutralText.text = "You attacked!";
         yield return new WaitForSeconds(1f);
@@ -156,10 +158,11 @@ public class TurnSystem : MonoBehaviour
     public void PlayerSkills()
     {
         UI.SetActive(false);
+        SkillsMenu.SetActive(true);
         NewtallText.SetActive(true);
         EmemyText.SetActive(true);
         PayerText.SetActive(true);
-        PlayerSkillText.text = player.GetComponent<PlayerRPG>().PlayerName + ": " + player.GetComponent<PlayerRPG>().currentHP;
+        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         EnemySkillText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
         NeutralSkillText.text = "Choose a Skill: ";
 
@@ -206,17 +209,27 @@ public class TurnSystem : MonoBehaviour
         { 
             return; 
         }
+        if (Billy.currentIQ < 5)
+        {
+            return;
+        }
         if (cooldown == false)
         {
-            CornHeal();
+            StartCoroutine(CornHeal());
             Invoke("ResetCooldown", 3f);
             cooldown = true;
         }
     }
 
-    public void CornHeal()
+    public IEnumerator CornHeal()
     {
-        
+        NeutralSkillText.text = "Billy healed " + Billy.intellect + " HP!";
+        yield return new WaitForSeconds(1f);
+        Billy.Heal(Billy.intellect);
+        Billy.currentIQ -= 5;
+        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(EnemyTurn());
     }
 
     public void OnBrawl()
@@ -225,17 +238,39 @@ public class TurnSystem : MonoBehaviour
         {
             return;
         }
+        if (Billy.currentIQ < 10)
+        {
+            return;
+        }
         if (cooldown == false)
         {
-            BillyBrawl();
+            StartCoroutine(BillyBrawl());
             Invoke("ResetCooldown", 3f);
             cooldown = true;
         }
     }
 
-    public void BillyBrawl()
+    public IEnumerator BillyBrawl()
     {
+        NeutralSkillText.text = "BILLY BRAWL!";
+        Billy.currentIQ -= 10;
+        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        badguy.TakeDamage(Billy.strength * 2);
+        yield return new WaitForSeconds(1f);
+        NeutralSkillText.text = "Billy did " + (Billy.strength * 2) + " Damage!";
+        EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP;
+        yield return new WaitForSeconds(1f);
 
+        if (isDead)
+        {
+            state = BattleState.WIN;
+            EndBattle();
+        }
+        else
+        {
+            state = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
+        }
     }
 
     public void OnTalk()
@@ -244,17 +279,22 @@ public class TurnSystem : MonoBehaviour
         {
             return;
         }
+        if (Billy.currentIQ < 15) 
+        {
+            return;
+        }
         if (cooldown == false)
         {
-            MeanTalk();
+            StartCoroutine(MeanTalk());
             Invoke("ResetCooldown", 3f);
             cooldown = true;
         }
     }
 
-    public void MeanTalk()
+    public IEnumerator MeanTalk()
     {
-
+        NeutralSkillText.text = "Billy used mean talk!";
+        yield return new WaitForSeconds(1f);
     }
 
     public void OnTruck()
@@ -263,17 +303,44 @@ public class TurnSystem : MonoBehaviour
         {
             return;
         }
+        if (Billy.currentIQ < 20)
+        {
+            return;
+        }
         if (cooldown == false)
         {
-            TruckTime();
+            StartCoroutine(TruckTime());
             Invoke("ResetCooldown", 3f);
             cooldown = true;
         }
     }
 
-    public void TruckTime()
+    public IEnumerator TruckTime()
     {
+        NeutralSkillText.text = "Billy calls his Truck!";
+        yield return new WaitForSeconds(1f);
+        NeutralSkillText.text = "It does massive damage!";
+        badguy.TakeDamage(Billy.strength * 5);
+        Billy.currentIQ -= 20;
+        EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP;
+        yield return new WaitForSeconds(1f);
 
+        if (isDead)
+        {
+            state = BattleState.WIN;
+            EndBattle();
+        }
+        else
+        {
+            state = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
+        }
+    }
+
+    public void OnBack()
+    {
+        SkillsMenu.SetActive(false);
+        UI.SetActive(true);
     }
 
     public void OnItem()

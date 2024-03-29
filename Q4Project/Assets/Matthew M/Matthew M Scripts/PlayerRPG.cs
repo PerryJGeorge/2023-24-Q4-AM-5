@@ -9,8 +9,9 @@ public class PlayerRPG : MonoBehaviour
     public int currentHP;
     public int currentIQ;
     public int maxIQ;
-    public int attack;
+    public int strength;
     public int defense;
+    public int intellect;
     public int EXP;
     public int Dollars;
     public int Eva;
@@ -18,7 +19,7 @@ public class PlayerRPG : MonoBehaviour
 
     public bool TakeDamage(int enemydamage)
     {
-        currentHP -= enemydamage;
+        currentHP -= enemydamage - defense;
         if (currentHP <= 0)
         {
             return true;
@@ -26,6 +27,15 @@ public class PlayerRPG : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    public void Heal(int healAmount)
+    {
+        currentHP += healAmount;
+        if (currentHP > MaxHP)
+        {
+            currentHP = MaxHP;
         }
     }
 }
