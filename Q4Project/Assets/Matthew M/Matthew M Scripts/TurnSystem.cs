@@ -34,7 +34,7 @@ public class TurnSystem : MonoBehaviour
     public GameObject BulletBox;
     public GameObject Heart;
     public GameObject UI;
-    public GameObject AttackAnim;
+    public List<GameObject> AttackList;
     public GameObject SkillsMenu;
     public PlayerRPG Billy;
     public EnemyRPG badguy;
@@ -47,9 +47,22 @@ public class TurnSystem : MonoBehaviour
         enemy.GetComponent<EnemyRPG>();
         BulletBox.SetActive(false);
         Heart.SetActive(false);
-        AttackAnim.SetActive(false);
+        for (int i = 0; i < AttackList.Count; i++)
+        {
+            if (AttackList[i].activeSelf == true)
+            {
+                AttackList[i].SetActive(false);
+            }
+        }
         PlayerText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
-        EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
+        if (badguy.enemyHP > 0)
+        {
+            EnemyText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
+        }
+        else
+        {
+            EnemyText.text = badguy.EnemyName + ": 0 HP";
+        }
         NeutralText.text = enemy.GetComponent<EnemyRPG>().EnemyName + " Attacked!";
 
         state = BattleState.PLAYERTURN;
@@ -62,17 +75,37 @@ public class TurnSystem : MonoBehaviour
         BulletBox.SetActive(false);
         Heart.SetActive(false);
         UI.SetActive(true);
-        AttackAnim.SetActive(false);
+        for (int i = 0; i < AttackList.Count;  i++)
+        {
+            if (AttackList[i].activeSelf == true)
+            {
+                AttackList[i].SetActive(false);
+            }
+        }
         SkillsMenu.SetActive(false);
         PlayerText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
-        EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
+        if (badguy.enemyHP > 0)
+        {
+            EnemyText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
+        }
+        else
+        {
+            EnemyText.text = badguy.EnemyName + ": 0 HP";
+        }
         NeutralText.text = "Choose an action: ";
     }
     IEnumerator PlayerAttack()
     {
         yield return new WaitForSeconds(1f);
         bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().strength);
-        EnemyText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
+        if (badguy.enemyHP > 0)
+        {
+            EnemyText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
+        }
+        else
+        {
+            EnemyText.text = badguy.EnemyName + ": 0 HP";
+        }
         NeutralText.text = "You attacked!";
         yield return new WaitForSeconds(1f);
 
@@ -95,7 +128,8 @@ public class TurnSystem : MonoBehaviour
         SkillsMenu.SetActive(false);
         yield return new WaitForSeconds(0.2f);
         Heart.SetActive(true);
-        AttackAnim.SetActive(true);
+        int AttackChosen = Random.Range(0, AttackList.Count);
+        AttackList[AttackChosen].SetActive(true);
         Heart.GetComponent<BulletBox>().SetHeart();
         yield return new WaitForSeconds(5f);
         if (isDead)
@@ -115,6 +149,7 @@ public class TurnSystem : MonoBehaviour
         if(state == BattleState.WIN)
         {
             NeutralText.text = "You Win!";
+            NeutralSkillText.text = "You Win!";
         }
         else if (state == BattleState.LOSE)
         {
@@ -163,7 +198,14 @@ public class TurnSystem : MonoBehaviour
         EmemyText.SetActive(true);
         PayerText.SetActive(true);
         PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
-        EnemySkillText.text = enemy.GetComponent<EnemyRPG>().EnemyName + ": " + enemy.GetComponent<EnemyRPG>().enemyHP;
+        if (badguy.enemyHP > 0)
+        {
+            EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
+        }
+        else
+        {
+            EnemySkillText.text = badguy.EnemyName + ": 0 HP";
+        }
         NeutralSkillText.text = "Choose a Skill: ";
 
         if (Billy.Level < 2)
@@ -224,9 +266,10 @@ public class TurnSystem : MonoBehaviour
     public IEnumerator CornHeal()
     {
         NeutralSkillText.text = "Billy healed " + Billy.intellect + " HP!";
+        Billy.currentIQ -= 5;
+        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
         Billy.Heal(Billy.intellect);
-        Billy.currentIQ -= 5;
         PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
         StartCoroutine(EnemyTurn());
@@ -255,10 +298,17 @@ public class TurnSystem : MonoBehaviour
         NeutralSkillText.text = "BILLY BRAWL!";
         Billy.currentIQ -= 10;
         PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
-        badguy.TakeDamage(Billy.strength * 2);
+        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().strength * 2);
         yield return new WaitForSeconds(1f);
         NeutralSkillText.text = "Billy did " + (Billy.strength * 2) + " Damage!";
-        EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP;
+        if (badguy.enemyHP > 0)
+        {
+            EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
+        }
+        else
+        {
+            EnemySkillText.text = badguy.EnemyName + ": 0 HP";
+        }
         yield return new WaitForSeconds(1f);
 
         if (isDead)
@@ -294,7 +344,24 @@ public class TurnSystem : MonoBehaviour
     public IEnumerator MeanTalk()
     {
         NeutralSkillText.text = "Billy used mean talk!";
+        Billy.currentIQ -= 15;
+        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
+        int meanie = Random.Range(0, 100);
+        NeutralSkillText.text = "\"I hope you don't have that great of a day!\"";
+        yield return new WaitForSeconds(2f);
+        if (meanie < 20)
+        {
+            NeutralSkillText.text = "The enemy was scared and escaped!";
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("Ian Test Scene");
+        }
+        else
+        {
+            NeutralSkillText.text = "The enemy was not amused!";
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(EnemyTurn());
+        }
     }
 
     public void OnTruck()
@@ -318,11 +385,19 @@ public class TurnSystem : MonoBehaviour
     public IEnumerator TruckTime()
     {
         NeutralSkillText.text = "Billy calls his Truck!";
+        Billy.currentIQ -= 20;
+        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
         NeutralSkillText.text = "It does massive damage!";
-        badguy.TakeDamage(Billy.strength * 5);
-        Billy.currentIQ -= 20;
-        EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP;
+        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().strength * 5);
+        if (badguy.enemyHP > 0)
+        {
+            EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
+        }
+        else
+        {
+            EnemySkillText.text = badguy.EnemyName + ": 0 HP";
+        }
         yield return new WaitForSeconds(1f);
 
         if (isDead)
@@ -370,7 +445,7 @@ public class TurnSystem : MonoBehaviour
         int loser = Random.Range(0, 100);
         NeutralText.text = "You attempt to escape...";
         yield return new WaitForSeconds(2f);
-        if (loser > 50 + (2 * player.GetComponent<PlayerRPG>().Eva))
+        if (loser < 50 + (2 * player.GetComponent<PlayerRPG>().Eva))
         {
             NeutralText.text = "You escaped the battle!";
             SceneManager.LoadScene("Ian Test Scene");
