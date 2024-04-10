@@ -21,17 +21,18 @@ public class PlayerCtrl : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        animator.SetBool("Is moving", moveInput != Vector2.zero);
 
 
 
- 
         if (moveInput != Vector2.zero)
         {
 
             animator.SetFloat("XInput", moveInput.x);
             animator.SetFloat("YInput", moveInput.y);
-    }
 
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -39,4 +40,5 @@ public class PlayerCtrl : MonoBehaviour
         speedY = moveInput.y * movSpeed; // Use moveInput.y instead of Input.GetAxisRaw("Vertical")
         rb.velocity = new Vector2(speedX, speedY);
     }
-}}
+}
+
