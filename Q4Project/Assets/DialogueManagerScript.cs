@@ -10,6 +10,8 @@ public class DialogueManagerScript : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text dialogueText;
 
+    public Animator animator;
+
     private Queue<string> sentences;
 
     // Start is called before the first frame update
@@ -20,6 +22,8 @@ public class DialogueManagerScript : MonoBehaviour
 
     public void StartDialogue (DialogueScript dialogue)
     {
+        animator.SetBool("IsOpen", true);
+
         nameText.text = dialogue.name;
 
         sentences.Clear();
@@ -46,6 +50,6 @@ public class DialogueManagerScript : MonoBehaviour
 
     void EndDialogue()
     {
-        Debug.Log("End of conversation.");
+        animator.SetBool("IsOpen", false);
     }
 }
