@@ -350,7 +350,7 @@ public class TurnSystem : MonoBehaviour
         int meanie = Random.Range(0, 100);
         NeutralSkillText.text = "\"I hope you don't have that great of a day!\"";
         yield return new WaitForSeconds(2f);
-        if (meanie < 20)
+        if ((meanie + (Billy.Luck / 2)) < 90 )
         {
             NeutralSkillText.text = "The enemy was scared and escaped!";
             yield return new WaitForSeconds(1f);

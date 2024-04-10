@@ -15,6 +15,7 @@ public class PlayerRPG : MonoBehaviour
     public int EXP;
     public int Dollars;
     public int Eva;
+    public int Luck;
     public int Level = 1;
 
     public bool TakeDamage(int enemydamage)
