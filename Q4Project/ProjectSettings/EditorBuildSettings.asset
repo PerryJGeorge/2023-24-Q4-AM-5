@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Main Menu.unity
     guid: 72c8bf7bcf2fdbc468668d690fdba435
   - enabled: 1
+    path: Assets/Matthew M/House Scene.unity
+    guid: 0b9f2763c221ebb41a1eda04efbbc996
+  - enabled: 1
     path: Assets/Matthew M/Battle Scene.unity
     guid: 2e6dcd918e636d74796b253c2eb37052
   - enabled: 1
