@@ -22,7 +22,7 @@ public class DialogueManagerScript : MonoBehaviour
 
     public void StartDialogue (DialogueScript dialogue)
     {
-        animator.SetBool("IsOpen", true);
+        animator.SetBool("isOpen", true);
 
         nameText.text = dialogue.name;
 
@@ -36,6 +36,16 @@ public class DialogueManagerScript : MonoBehaviour
         DisplayNextSentence();
     }
 
+    IEnumerator TypeSentence (string sentence)
+    {
+        dialogueText.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return null;
+        }
+    }
+
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
@@ -45,11 +55,12 @@ public class DialogueManagerScript : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
     }
 
     void EndDialogue()
     {
-        animator.SetBool("IsOpen", false);
+        animator.SetBool("isOpen", false);
     }
 }
