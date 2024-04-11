@@ -7,11 +7,16 @@ public class EnemyAttack : MonoBehaviour
     public PlayerRPG target;
     public EnemyRPG enemyattack;
     public GameObject Heart;
-    public bool isFrames = false;
-    public float IFrames;
+    public float IFrames = 0.5f;
 
-    public void OnTriggerEnter2D(Collider2D collider)
+    public IEnumerator OnTriggerEnter2D(Collider2D collider)
     {
-        target.TakeDamage(enemyattack.enemydamage);
+        if (Heart.GetComponent<BoxCollider2D>().enabled)
+        {
+            target.TakeDamage(enemyattack.enemydamage);
+            Heart.GetComponent<BoxCollider2D>().enabled = false;
+            yield return new WaitForSeconds(IFrames);
+            Heart.GetComponent<BoxCollider2D>().enabled = true;
+        }
     }
 }

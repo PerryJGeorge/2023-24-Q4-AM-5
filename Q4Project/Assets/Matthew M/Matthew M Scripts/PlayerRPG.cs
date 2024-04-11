@@ -12,10 +12,10 @@ public class PlayerRPG : MonoBehaviour
     public int strength;
     public int defense;
     public int intellect;
-    public int EXP;
-    public int Dollars;
     public int Eva;
     public int Luck;
+    public int Dollars;
+    public int EXP;
     public int Level = 1;
 
     public bool TakeDamage(int enemydamage)

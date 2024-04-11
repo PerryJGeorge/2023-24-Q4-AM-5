@@ -461,8 +461,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!61 &34989227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -473,7 +472,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0013710856}
@@ -1048,6 +1047,8 @@ MonoBehaviour:
   rb: {fileID: 360901073}
   moveSpeed: 5
   Startingpos: {x: -0.14, y: -2.56, z: 0}
+  MaxPos: {x: 1.881, y: -0.98}
+  MinPos: {x: -2.368, y: -4.244}
 --- !u!50 &360901073
 Rigidbody2D:
   serializedVersion: 4
@@ -1160,6 +1161,10 @@ MonoBehaviour:
   BulletBox: {fileID: 1071048893}
   Heart: {fileID: 360901069}
   UI: {fileID: 1006029813}
+  EnemyType:
+  - CIA Agent
+  - Enemy Robot
+  - K1-TU2
   AttackList:
   - {fileID: 1652741803}
   - {fileID: 620392288}
@@ -1465,8 +1470,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!58 &409202616
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1477,7 +1481,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.030826528}
@@ -1585,8 +1589,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!58 &410891571
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1597,7 +1600,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.030826528}
@@ -1745,8 +1748,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!61 &432464312
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1895,8 +1897,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!58 &538436445
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1907,7 +1908,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.030826528}
@@ -2015,8 +2016,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!58 &597656540
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2027,7 +2027,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.030826528}
@@ -2266,8 +2266,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 3
+  IFrames: 0.5
 --- !u!95 &647957354
 Animator:
   serializedVersion: 4
@@ -2747,8 +2746,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!58 &784182957
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2759,7 +2757,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.030826528}
@@ -2887,8 +2885,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!58 &784932999
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2899,7 +2896,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.030826528}
@@ -3435,8 +3432,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!61 &896358388
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3848,8 +3844,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!61 &999544313
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3860,7 +3855,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0013710856}
@@ -4376,8 +4371,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!58 &1203582510
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4388,7 +4382,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.030826528}
@@ -4917,8 +4911,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!61 &1512552133
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5203,8 +5196,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!58 &1806984279
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5215,7 +5207,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.030826528}
@@ -5306,16 +5298,16 @@ MonoBehaviour:
   PlayerName: Billy
   MaxHP: 15
   currentHP: 15
-  currentIQ: 100
-  maxIQ: 100
-  strength: 3
-  defense: 2
-  intellect: 5
+  currentIQ: 5
+  maxIQ: 5
+  strength: 2
+  defense: 1
+  intellect: 3
+  Eva: 2
+  Luck: 3
+  Dollars: 30
   EXP: 0
-  Dollars: 0
-  Eva: 0
-  Luck: 0
-  Level: 8
+  Level: 1
 --- !u!212 &1816132268
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5453,8 +5445,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!58 &1841435405
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5465,7 +5456,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.030826528}
@@ -5919,8 +5910,7 @@ MonoBehaviour:
   target: {fileID: 1816132267}
   enemyattack: {fileID: 1637559314}
   Heart: {fileID: 360901069}
-  isFrames: 0
-  IFrames: 0
+  IFrames: 0.5
 --- !u!61 &2111732400
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -34,6 +34,7 @@ public class TurnSystem : MonoBehaviour
     public GameObject BulletBox;
     public GameObject Heart;
     public GameObject UI;
+    public List<string> EnemyType;
     public List<GameObject> AttackList;
     public GameObject SkillsMenu;
     public PlayerRPG Billy;
@@ -53,6 +54,14 @@ public class TurnSystem : MonoBehaviour
             {
                 AttackList[i].SetActive(false);
             }
+        }
+        if(Billy.currentHP > 0)
+        {
+            PlayerText.text = Billy.name + ": " + Billy.currentHP + " HP";
+        }
+        else
+        {
+            PlayerText.text = Billy.name + ": 0 HP";
         }
         PlayerText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         if (badguy.enemyHP > 0)
@@ -128,6 +137,7 @@ public class TurnSystem : MonoBehaviour
         SkillsMenu.SetActive(false);
         yield return new WaitForSeconds(0.2f);
         Heart.SetActive(true);
+        Heart.GetComponent<BoxCollider2D>().enabled = true;
         int AttackChosen = Random.Range(0, AttackList.Count);
         AttackList[AttackChosen].SetActive(true);
         Heart.GetComponent<BulletBox>().SetHeart();
@@ -150,6 +160,8 @@ public class TurnSystem : MonoBehaviour
         {
             NeutralText.text = "You Win!";
             NeutralSkillText.text = "You Win!";
+            Billy.EXP += 5;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else if (state == BattleState.LOSE)
         {
@@ -354,7 +366,7 @@ public class TurnSystem : MonoBehaviour
         {
             NeutralSkillText.text = "The enemy was scared and escaped!";
             yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("Ian Test Scene");
+            SceneManager.LoadScene("fE");
         }
         else
         {
