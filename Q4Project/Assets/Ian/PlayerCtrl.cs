@@ -38,6 +38,17 @@ public class PlayerCtrl : MonoBehaviour
     {
         speedX = moveInput.x * movSpeed; // Use moveInput.x instead of Input.GetAxisRaw("Horizontal")
         speedY = moveInput.y * movSpeed; // Use moveInput.y instead of Input.GetAxisRaw("Vertical")
+
+        if (Mathf.Abs(speedX) > Mathf.Abs(speedY))
+        {
+            speedY = 0;
+        }
+        else
+        {
+            speedX = 0;
+        }
+
+
         rb.velocity = new Vector2(speedX, speedY);
     }
 }
