@@ -22,7 +22,7 @@ public class DialogueManagerScript : MonoBehaviour
 
     public void StartDialogue (DialogueScript dialogue)
     {
-        animator.SetBool("isOpen", true);
+        animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
 
@@ -61,6 +61,6 @@ public class DialogueManagerScript : MonoBehaviour
 
     void EndDialogue()
     {
-        animator.SetBool("isOpen", false);
+        animator.SetBool("IsOpen", false);
     }
 }
