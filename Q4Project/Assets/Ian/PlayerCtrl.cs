@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerCtrl : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerCtrl : MonoBehaviour
     Rigidbody2D rb;
     private Animator animator;
     private Vector2 moveInput;
+    public KeyCode Interact;
+    public LayerMask interactlayer;
+    public GameObject grigo2;
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +52,19 @@ public class PlayerCtrl : MonoBehaviour
             speedX = 0;
         }
 
-
         rb.velocity = new Vector2(speedX, speedY);
     }
+
+ //   private void OnTriggerEnter2D( collision)
+ //   {
+ //       if (Input.GetKey(Interact))
+ //       {
+ //           if (collision.gameObject.layer == interactlayer)
+ //           {
+ //               grigo2.GetComponent<DialogueTriggerScript>().TriggerDialogue();
+ //           }
+ //       }
+ //
+ //   }
 }
 
