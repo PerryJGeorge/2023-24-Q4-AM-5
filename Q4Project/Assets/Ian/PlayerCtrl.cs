@@ -61,8 +61,10 @@ public class PlayerCtrl : MonoBehaviour
             Collider2D[] collideObject = Physics2D.OverlapCircleAll(transform.position, interactRange, Interactable);
             foreach (Collider2D interactObject in collideObject)
             {
-                interactObject.gameObject.TryGetComponent(out DialogueTriggerScript dialogueScript);
-                dialogueScript.TriggerDialogue();
+                if (interactObject.gameObject.TryGetComponent(out DialogueTriggerScript dialogueScript))
+                {
+                    dialogueScript.TriggerDialogue();
+                }
             }
         }
     }
