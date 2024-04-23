@@ -12,8 +12,9 @@ public class PlayerCtrl : MonoBehaviour
     private Animator animator;
     private Vector2 moveInput;
     public KeyCode Interact;
-    public LayerMask interactlayer;
-    public GameObject grigo2;
+    public float interactRange = 30f;
+    private List<Transform> npclist;
+    public LayerMask Interactable;
 
     // Start is called before the first frame update
     void Start()
@@ -53,18 +54,17 @@ public class PlayerCtrl : MonoBehaviour
         }
 
         rb.velocity = new Vector2(speedX, speedY);
-    }
 
- //   private void OnTriggerEnter2D( collision)
- //   {
- //       if (Input.GetKey(Interact))
- //       {
- //           if (collision.gameObject.layer == interactlayer)
- //           {
- //               grigo2.GetComponent<DialogueTriggerScript>().TriggerDialogue();
- //           }
- //       }
- //
- //   }
+        if (Input.GetKeyDown(Interact))
+        {
+            
+            Collider2D[] collideObject = Physics2D.OverlapCircleAll(transform.position, interactRange, Interactable);
+            foreach (Collider2D interactObject in collideObject)
+            {
+                interactObject.gameObject.TryGetComponent(out DialogueTriggerScript dialogueScript);
+                dialogueScript.TriggerDialogue();
+            }
+        }
+    }
 }
 

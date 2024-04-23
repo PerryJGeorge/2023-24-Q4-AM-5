@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 24485349}
   - component: {fileID: 24485352}
   m_Layer: 10
-  m_Name: Bed
+  m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   dialogue:
     name: Billy
     sentences:
-    - Who is the hottest guy in Moron Arca?
+    - No Habla Ingles
 --- !u!1 &32496268
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,8 +924,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193095143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.89, y: 8.96, z: 0}
-  m_LocalScale: {x: 1.6491, y: 1.9441, z: 1}
+  m_LocalPosition: {x: 2.74, y: 8.78, z: 0}
+  m_LocalScale: {x: 1.5, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1008,8 +1008,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218864730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.86, y: 5.3763, z: 0}
-  m_LocalScale: {x: 1.6491, y: 2.2366872, z: 1}
+  m_LocalPosition: {x: 2.86, y: 5.54, z: 0}
+  m_LocalScale: {x: 2, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -8337,10 +8337,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movSpeed: 10
   Interact: 101
-  interactlayer:
+  interactRange: 4
+  Interactable:
     serializedVersion: 2
     m_Bits: 1024
-  grigo2: {fileID: 24485348}
 --- !u!212 &1598452137
 SpriteRenderer:
   m_ObjectHideFlags: 0
