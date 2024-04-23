@@ -20,6 +20,12 @@ public class DialogueManagerScript : MonoBehaviour
         sentences = new Queue<string>();
     }
 
+    private void Awake()
+    {
+        Image.sprite = characterSprite;
+        Image.preserveAspect = true;
+    }
+
     public void StartDialogue (DialogueScript dialogue)
     {
         animator.SetBool("isOpen", true);
@@ -45,6 +51,9 @@ public class DialogueManagerScript : MonoBehaviour
             yield return null;
         }
     }
+
+    [SerializeField] private Sprite characterSprite;
+    [SerializeField] private Image Image;
 
     public void DisplayNextSentence()
     {

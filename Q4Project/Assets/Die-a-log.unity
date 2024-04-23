@@ -909,6 +909,8 @@ MonoBehaviour:
   nameText: {fileID: 2082574493}
   dialogueText: {fileID: 1223931015}
   animator: {fileID: 1494227975}
+  characterSprite: {fileID: 21300000, guid: 68bf5811d7435ce4d907718ce482c3dc, type: 3}
+  Image: {fileID: 1428720461}
 --- !u!4 &1588176615
 Transform:
   m_ObjectHideFlags: 0
