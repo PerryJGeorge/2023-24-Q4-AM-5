@@ -10,13 +10,18 @@ public class flick : MonoBehaviour
     public float wait;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Invoke("LoadScene",wait);
+        Invoke("LoadScene", wait);
         fade.leave();
-       
+
     }
     private void LoadScene()
     {
         SceneManager.LoadScene(Load);
     }
+    public void UniqueExit()
+    {
+        Invoke("LoadScene", wait);
+        fade.leave();
 
+    }
 }

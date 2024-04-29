@@ -13,6 +13,7 @@ public class Block_Push : MonoBehaviour
     {
         if (push_button.dir==1)
         {
+            
             me.transform.Translate(new Vector3(1,0,0));
         }
         if (push_button.dir == -1)
