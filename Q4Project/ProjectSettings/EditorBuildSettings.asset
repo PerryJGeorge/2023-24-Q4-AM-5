@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Matthew M/House Scene.unity
     guid: 0b9f2763c221ebb41a1eda04efbbc996
   - enabled: 1
+    path: Assets/Matthew M/Town Scene.unity
+    guid: 8f9a3af2ef29f12488cef80152c683ce
+  - enabled: 1
     path: Assets/Matthew M/Battle Scene.unity
     guid: 2e6dcd918e636d74796b253c2eb37052
   - enabled: 0
