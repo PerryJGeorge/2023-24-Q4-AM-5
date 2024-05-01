@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 419582544}
   DTS: {fileID: 999132194}
-  scenechange: {fileID: 999132188}
+  scenechange: {fileID: 655485055}
 --- !u!1 &419582539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,7 +2171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564291121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 241.84, y: 7.2, z: 0}
+  m_LocalPosition: {x: 241.84, y: 7.16, z: 0}
   m_LocalScale: {x: 27.41549, y: 2.8403428, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3377,7 +3377,8 @@ GameObject:
   - component: {fileID: 832244973}
   - component: {fileID: 832244972}
   - component: {fileID: 832244971}
-  m_Layer: 0
+  - component: {fileID: 832244974}
+  m_Layer: 10
   m_Name: Billys truck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3477,6 +3478,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &832244974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832244970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54913bf11c5acd4fbae1b25aa64875e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Billy
+    sentences:
+    - Truc
 --- !u!1 &843823775
 GameObject:
   m_ObjectHideFlags: 0

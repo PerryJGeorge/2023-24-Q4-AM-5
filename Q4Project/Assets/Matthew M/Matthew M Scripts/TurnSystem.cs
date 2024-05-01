@@ -57,13 +57,13 @@ public class TurnSystem : MonoBehaviour
         }
         if(Billy.currentHP > 0)
         {
-            PlayerText.text = Billy.name + ": " + Billy.currentHP + " HP";
+            PlayerText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP";
         }
         else
         {
-            PlayerText.text = Billy.name + ": 0 HP";
+            PlayerText.text = Billy.PlayerName + ": 0 HP";
         }
-        PlayerText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         if (badguy.enemyHP > 0)
         {
             EnemyText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
@@ -92,7 +92,7 @@ public class TurnSystem : MonoBehaviour
             }
         }
         SkillsMenu.SetActive(false);
-        PlayerText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         if (badguy.enemyHP > 0)
         {
             EnemyText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
@@ -209,7 +209,7 @@ public class TurnSystem : MonoBehaviour
         NewtallText.SetActive(true);
         EmemyText.SetActive(true);
         PayerText.SetActive(true);
-        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         if (badguy.enemyHP > 0)
         {
             EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
@@ -279,10 +279,10 @@ public class TurnSystem : MonoBehaviour
     {
         NeutralSkillText.text = "Billy healed " + Billy.intellect + " HP!";
         Billy.currentIQ -= 5;
-        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
         Billy.Heal(Billy.intellect);
-        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
         StartCoroutine(EnemyTurn());
     }
@@ -309,7 +309,7 @@ public class TurnSystem : MonoBehaviour
     {
         NeutralSkillText.text = "BILLY BRAWL!";
         Billy.currentIQ -= 10;
-        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().strength * 2);
         yield return new WaitForSeconds(1f);
         NeutralSkillText.text = "Billy did " + (Billy.strength * 2) + " Damage!";
@@ -357,7 +357,7 @@ public class TurnSystem : MonoBehaviour
     {
         NeutralSkillText.text = "Billy used mean talk!";
         Billy.currentIQ -= 15;
-        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
         int meanie = Random.Range(0, 100);
         NeutralSkillText.text = "\"I hope you don't have that great of a day!\"";
@@ -398,7 +398,7 @@ public class TurnSystem : MonoBehaviour
     {
         NeutralSkillText.text = "Billy calls his Truck!";
         Billy.currentIQ -= 20;
-        PlayerSkillText.text = Billy.name + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
         NeutralSkillText.text = "It does massive damage!";
         bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().strength * 5);

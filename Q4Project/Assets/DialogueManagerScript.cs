@@ -15,13 +15,9 @@ public class DialogueManagerScript : MonoBehaviour
     private Queue<string> sentences;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         sentences = new Queue<string>();
-    }
-
-    private void Awake()
-    {
         Image.sprite = characterSprite;
         Image.preserveAspect = true;
     }
