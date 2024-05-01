@@ -17,13 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Matthew M/Battle Scene.unity
     guid: 2e6dcd918e636d74796b253c2eb37052
-  - enabled: 0
-    path: Assets/Game_Scenes/Town_scene.unity
-    guid: b3c39f037b1a86d4c934451c7e50cdc8
   - enabled: 1
     path: Assets/Game_Scenes/Puzzle_Building_F1.unity
     guid: 88d51774bbff18a49b1069ac270745a3
   - enabled: 1
     path: Assets/Game_Scenes/Puzzle_Building_F2.unity
     guid: 8d3fda8e95cfbab42b14b40248088e73
+  - enabled: 1
+    path: Assets/Credits.unity
+    guid: e4b1d7006cd0f8543aed86a192697cce
   m_configObjects: {}
