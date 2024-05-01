@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca01e6986318694ab0696bcb4fa3451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 419582544}
+  player: {fileID: 419582539}
   DTS: {fileID: 999132194}
   scenechange: {fileID: 655485055}
 --- !u!1 &419582539
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 419582548}
   - component: {fileID: 419582547}
   m_Layer: 0
-  m_Name: Player (1)
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1374,7 +1374,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &419582544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4629,6 +4629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1499356296}
   dialogueText: {fileID: 1927816243}
+  player: {fileID: 419582539}
   animator: {fileID: 1938379870}
   characterSprite: {fileID: 21300000, guid: 68bf5811d7435ce4d907718ce482c3dc, type: 3}
   Image: {fileID: 257017402}
