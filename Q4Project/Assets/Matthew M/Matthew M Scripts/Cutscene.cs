@@ -7,12 +7,14 @@ public class Cutscene : MonoBehaviour
 {
     public PlayerCtrl player;
     public DialogueTriggerScript DTS;
-    public flick scenechange;
+    public GameObject scenechange;
 
     // Start is called before the first frame update
     void Start()
     {
-        player.enabled = false;
+        player.movSpeed = 0;
         DTS.TriggerDialogue();
+        scenechange.GetComponent<flick>().UniqueExit();
+        player.movSpeed = 5;
     }
 }
