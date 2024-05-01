@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
-public class DialogueManagerScript : MonoBehaviour
+public class DialogueCutsceneManager : MonoBehaviour
 {
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     public GameObject player;
     public Animator animator;
-    public GameObject scenechange;
+    public GameObject SceneChange;
+
     private Queue<string> sentences;
 
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class DialogueManagerScript : MonoBehaviour
         Image.preserveAspect = true;
     }
 
-    public void StartDialogue (DialogueScript dialogue)
+    public void StartDialogue(DialogueScript dialogue)
     {
         animator.SetBool("isOpen", true);
 
@@ -38,7 +38,7 @@ public class DialogueManagerScript : MonoBehaviour
         DisplayNextSentence();
     }
 
-    IEnumerator TypeSentence (string sentence)
+    IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
@@ -67,8 +67,7 @@ public class DialogueManagerScript : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
-        player.GetComponent<PlayerCtrl>().movSpeed = 10;
-        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-        scenechange.GetComponent<flick>().UniqueExit();
+        SceneChange.GetComponent<flick>().UniqueExit();
     }
 }
+

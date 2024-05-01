@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 419582539}
-  DTS: {fileID: 999132194}
+  DTS: {fileID: 999132193}
   scenechange: {fileID: 655485055}
 --- !u!1 &419582539
 GameObject:
@@ -4242,7 +4242,6 @@ GameObject:
   - component: {fileID: 999132192}
   - component: {fileID: 999132191}
   - component: {fileID: 999132190}
-  - component: {fileID: 999132194}
   - component: {fileID: 999132193}
   m_Layer: 0
   m_Name: AIC Agent Cutscene
@@ -4353,29 +4352,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 999132188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18fd64174adfff44bbaf940c745ed7b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 1447512271}
-  Load: Battle Scene
-  wait: 2
---- !u!114 &999132194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999132188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f54913bf11c5acd4fbae1b25aa64875e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
     name: AIC Agent
     sentences:
-    - Hello
-    - No hablo ingles. Hablas espanol?
+    - Did you know, that in terms of
+    - 'male human and '
 --- !u!1 &999271814
 GameObject:
   m_ObjectHideFlags: 0
@@ -4631,6 +4615,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1927816243}
   player: {fileID: 419582539}
   animator: {fileID: 1938379870}
+  scenechange: {fileID: 655485055}
   characterSprite: {fileID: 21300000, guid: 68bf5811d7435ce4d907718ce482c3dc, type: 3}
   Image: {fileID: 257017402}
 --- !u!4 &1131583642
