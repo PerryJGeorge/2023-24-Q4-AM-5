@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -41,6 +42,7 @@ public class TurnSystem : MonoBehaviour
     public EnemyRPG badguy;
     public bool cooldown;
     public bool isDead;
+    public flick scenechange;
 
     IEnumerator SetupBattle()
     {
@@ -118,10 +120,10 @@ public class TurnSystem : MonoBehaviour
         NeutralText.text = "You attacked!";
         yield return new WaitForSeconds(1f);
 
-        if (isDead)
+        if (badguy.enemyHP <= 0)
         {
             state = BattleState.WIN;
-            EndBattle();
+            StartCoroutine(EndBattle());
         }
         else
         {
@@ -154,14 +156,33 @@ public class TurnSystem : MonoBehaviour
         }
     }
 
-    void EndBattle()
+    IEnumerator EndBattle()
     {
-        if(state == BattleState.WIN)
+        if (state == BattleState.WIN)
         {
             NeutralText.text = "You Win!";
             NeutralSkillText.text = "You Win!";
             Billy.EXP += 5;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (Billy.EXP > 20)
+            {
+                yield return new WaitForSeconds(2f);
+                NeutralText.text = "Level Up!";
+                NeutralSkillText.text = "Level Up!";
+                Billy.MaxHP += 5;
+                Billy.currentHP = Billy.MaxHP;
+                Billy.maxIQ += 2;
+                Billy.currentIQ = Billy.maxIQ;
+                Billy.strength += 1;
+                Billy.defense += 1;
+                Billy.intellect += 1;
+                Billy.Eva += 1;
+                Billy.Luck += 1;
+                Billy.Level += 1;
+                Billy.EXP = 0;
+                yield return new WaitForSeconds(1f);
+            }
+            yield return new WaitForSeconds(1f);
+            scenechange.UniqueExit();
         }
         else if (state == BattleState.LOSE)
         {
@@ -428,14 +449,6 @@ public class TurnSystem : MonoBehaviour
     {
         SkillsMenu.SetActive(false);
         UI.SetActive(true);
-    }
-
-    public void OnItem()
-    {
-        if (state != BattleState.PLAYERTURN)
-        {
-            return;
-        }
     }
 
     public void OnFlee()
