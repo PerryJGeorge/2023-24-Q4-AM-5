@@ -6,13 +6,13 @@ public class RandomEncounterTown : MonoBehaviour
 {
     public flick loadbattlescene;
 
-    void Start()
-    {
-        while (true)
-        {
-            StartCoroutine(CheckForScene());
-        }
-    }
+//    void Start()
+//    {
+//        while (true)
+//        {
+//            StartCoroutine(CheckForScene());
+//        }
+//    }
 
     IEnumerator CheckForScene()
     {

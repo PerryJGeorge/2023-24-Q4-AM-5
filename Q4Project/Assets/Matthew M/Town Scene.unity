@@ -4493,8 +4493,10 @@ MonoBehaviour:
   dialogue:
     name: AIC Agent
     sentences:
-    - I'm currently on
-    - 3 doses of marijuana
+    - You...
+    - You're the one who keeps trying to get into our building!
+    - Every day! We see you outside! What are you even doing out there!?
+    - So for that... We're going to take your truck away!
 --- !u!1 &999271814
 GameObject:
   m_ObjectHideFlags: 0
