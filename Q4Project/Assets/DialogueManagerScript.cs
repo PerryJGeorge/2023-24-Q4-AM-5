@@ -11,7 +11,6 @@ public class DialogueManagerScript : MonoBehaviour
     public TMP_Text dialogueText;
     public GameObject player;
     public Animator animator;
-    public GameObject scenechange;
     private Queue<string> sentences;
 
     // Start is called before the first frame update
@@ -24,6 +23,8 @@ public class DialogueManagerScript : MonoBehaviour
 
     public void StartDialogue (DialogueScript dialogue)
     {
+        player.GetComponent<PlayerCtrl>().movSpeed = 0;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
         animator.SetBool("isOpen", true);
 
         nameText.text = dialogue.name;
@@ -69,6 +70,5 @@ public class DialogueManagerScript : MonoBehaviour
         animator.SetBool("isOpen", false);
         player.GetComponent<PlayerCtrl>().movSpeed = 10;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-        scenechange.GetComponent<flick>().UniqueExit();
     }
 }
