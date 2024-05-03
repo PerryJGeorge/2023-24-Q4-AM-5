@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class DialogueManagerScript : MonoBehaviour
 {
     public TMP_Text nameText;
@@ -12,16 +11,17 @@ public class DialogueManagerScript : MonoBehaviour
     public GameObject player;
     public Animator animator;
     private Queue<string> sentences;
+    [SerializeField] private List<Sprite> profilePictures; // List of profile pictures for each character
+    [SerializeField] private Image image;
 
     // Start is called before the first frame update
     void Awake()
     {
         sentences = new Queue<string>();
-        Image.sprite = characterSprite;
-        Image.preserveAspect = true;
+        image.preserveAspect = true;
     }
 
-    public void StartDialogue (DialogueScript dialogue)
+    public void StartDialogue(DialogueScript dialogue, int characterIndex)
     {
         player.GetComponent<PlayerCtrl>().movSpeed = 0;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
@@ -36,10 +36,16 @@ public class DialogueManagerScript : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
+        // Set the profile picture based on the character index
+        if (characterIndex >= 0 && characterIndex < profilePictures.Count)
+        {
+            image.sprite = profilePictures[characterIndex];
+        }
+
         DisplayNextSentence();
     }
 
-    IEnumerator TypeSentence (string sentence)
+    IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
@@ -48,9 +54,6 @@ public class DialogueManagerScript : MonoBehaviour
             yield return null;
         }
     }
-
-    [SerializeField] private Sprite characterSprite;
-    [SerializeField] private Image Image;
 
     public void DisplayNextSentence()
     {
