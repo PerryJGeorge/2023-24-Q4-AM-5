@@ -114278,6 +114278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadbattlescene: {fileID: 1509824724}
+  player: {fileID: 1264100936}
 --- !u!4 &1509824726
 Transform:
   m_ObjectHideFlags: 0
