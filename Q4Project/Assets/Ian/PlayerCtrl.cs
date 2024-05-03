@@ -15,8 +15,13 @@ public class PlayerCtrl : MonoBehaviour
     public float interactRange = 30f;
     private List<Transform> npclist;
     public LayerMask Interactable;
+    public GameObject SavePosition;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        transform.position = SavePosition.GetComponent<Transform>().position;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
