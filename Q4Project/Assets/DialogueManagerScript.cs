@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class DialogueManagerScript : MonoBehaviour
 {
@@ -71,6 +72,7 @@ public class DialogueManagerScript : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+        player.GetComponent<PlayerCtrl>().enabled = true;
         player.GetComponent<PlayerCtrl>().movSpeed = 10;
         player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
