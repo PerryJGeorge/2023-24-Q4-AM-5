@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class DontDestroy : MonoBehaviour
 {
-    public GameObject Billy;
+    private static bool spawned;
 
     void Awake()
     {
-        DontDestroyOnLoad(Billy);
+        if (spawned == false)
+        {
+            spawned = true;
+
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            DestroyImmediate(gameObject);
+        }
     }
 
 }
