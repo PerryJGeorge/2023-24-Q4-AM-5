@@ -6,7 +6,7 @@ using UnityEngine;
 public class Cutscene : MonoBehaviour
 {
     public GameObject player;
-    public DialogueTriggerScript DTS;
+    public DialogueCutsceneTrigger DTS;
     public GameObject scenechange;
 
     void Start()
