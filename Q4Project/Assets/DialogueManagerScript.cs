@@ -9,7 +9,7 @@ public class DialogueManagerScript : MonoBehaviour
 {
     public TMP_Text nameText;
     public TMP_Text dialogueText;
-
+    public GameObject player;
     public Animator animator;
 
     private Queue<string> sentences;
@@ -67,5 +67,7 @@ public class DialogueManagerScript : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+        player.GetComponent<PlayerCtrl>().movSpeed = 10;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }
