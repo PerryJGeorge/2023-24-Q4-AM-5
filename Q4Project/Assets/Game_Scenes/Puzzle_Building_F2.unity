@@ -1805,6 +1805,7 @@ MonoBehaviour:
   Interactable:
     serializedVersion: 2
     m_Bits: 0
+  SavePosition: {fileID: 2145669691}
 --- !u!212 &802659932
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2597,6 +2598,10 @@ PrefabInstance:
     - target: {fileID: 8829283863731541450, guid: cc7ca1acc5fcb3a4187b17e1e54882e9, type: 3}
       propertyPath: m_Name
       value: intro_fade
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829283863731541450, guid: cc7ca1acc5fcb3a4187b17e1e54882e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8829283863731541454, guid: cc7ca1acc5fcb3a4187b17e1e54882e9, type: 3}
       propertyPath: m_Pivot.x
@@ -3422,7 +3427,7 @@ GameObject:
   - component: {fileID: 2145669693}
   - component: {fileID: 2145669692}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: Triangleop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
