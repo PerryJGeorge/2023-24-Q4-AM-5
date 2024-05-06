@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class PlayerRPG : MonoBehaviour
 {
-    public string PlayerName;
-    public int MaxHP;
-    public int currentHP;
-    public int currentIQ;
-    public int maxIQ;
-    public int strength;
-    public int defense;
-    public int intellect;
-    public int Eva;
-    public int Luck;
-    public int Dollars;
-    public int EXP;
-    public int Level = 1;
+    public static string PlayerName = "Billy";
+    public static int MaxHP = 15;
+    public static int currentHP = 15;
+    public static int currentIQ = 5;
+    public static int maxIQ = 5;
+    public static int strength = 2;
+    public static int defense = 1;
+    public static int intellect = 3;
+    public static int Eva = 2;
+    public static int Luck = 3;
+    public static int EXP = 0;
+    public static int Level = 1;
 
     public bool TakeDamage(int enemydamage)
     {

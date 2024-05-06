@@ -57,15 +57,15 @@ public class TurnSystem : MonoBehaviour
                 AttackList[i].SetActive(false);
             }
         }
-        if(Billy.currentHP > 0)
+        if(PlayerRPG.currentHP > 0)
         {
-            PlayerText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP";
+            PlayerText.text = PlayerRPG.PlayerName + ": " + PlayerRPG.currentHP + " HP";
         }
         else
         {
-            PlayerText.text = Billy.PlayerName + ": 0 HP";
+            PlayerText.text = PlayerRPG.PlayerName + ": 0 HP";
         }
-        PlayerText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerText.text = PlayerRPG.PlayerName + ": " + PlayerRPG.currentHP + " HP | " + PlayerRPG.currentIQ + " IQ";
         if (badguy.enemyHP > 0)
         {
             EnemyText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
@@ -94,7 +94,7 @@ public class TurnSystem : MonoBehaviour
             }
         }
         SkillsMenu.SetActive(false);
-        PlayerText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerText.text = PlayerRPG.PlayerName + ": " + PlayerRPG.currentHP + " HP | " + PlayerRPG.currentIQ + " IQ";
         if (badguy.enemyHP > 0)
         {
             EnemyText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
@@ -108,7 +108,7 @@ public class TurnSystem : MonoBehaviour
     IEnumerator PlayerAttack()
     {
         yield return new WaitForSeconds(1f);
-        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().strength);
+        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(PlayerRPG.strength);
         if (badguy.enemyHP > 0)
         {
             EnemyText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
@@ -162,23 +162,23 @@ public class TurnSystem : MonoBehaviour
         {
             NeutralText.text = "You Win!";
             NeutralSkillText.text = "You Win!";
-            Billy.EXP += 5;
-            if (Billy.EXP > 20)
+            PlayerRPG.EXP += 5;
+            if (PlayerRPG.EXP > 20)
             {
                 yield return new WaitForSeconds(2f);
                 NeutralText.text = "Level Up!";
                 NeutralSkillText.text = "Level Up!";
-                Billy.MaxHP += 5;
-                Billy.currentHP = Billy.MaxHP;
-                Billy.maxIQ += 2;
-                Billy.currentIQ = Billy.maxIQ;
-                Billy.strength += 1;
-                Billy.defense += 1;
-                Billy.intellect += 1;
-                Billy.Eva += 1;
-                Billy.Luck += 1;
-                Billy.Level += 1;
-                Billy.EXP = 0;
+                PlayerRPG.MaxHP += 5;
+                PlayerRPG.currentHP = PlayerRPG.MaxHP;
+                PlayerRPG.maxIQ += 2;
+                PlayerRPG.currentIQ = PlayerRPG.maxIQ;
+                PlayerRPG.strength += 1;
+                PlayerRPG.defense += 1;
+                PlayerRPG.intellect += 1;
+                PlayerRPG.Eva += 1;
+                PlayerRPG.Luck += 1;
+                PlayerRPG.Level += 1;
+                PlayerRPG.EXP = 0;
                 yield return new WaitForSeconds(1f);
             }
             yield return new WaitForSeconds(1f);
@@ -230,7 +230,7 @@ public class TurnSystem : MonoBehaviour
         NewtallText.SetActive(true);
         EmemyText.SetActive(true);
         PayerText.SetActive(true);
-        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerSkillText.text = PlayerRPG.PlayerName + ": " + PlayerRPG.currentHP + " HP | " + PlayerRPG.currentIQ + " IQ";
         if (badguy.enemyHP > 0)
         {
             EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
@@ -241,28 +241,28 @@ public class TurnSystem : MonoBehaviour
         }
         NeutralSkillText.text = "Choose a Skill: ";
 
-        if (Billy.Level < 2)
+        if (PlayerRPG.Level < 2)
         {
             Skill1.text = "LOCKED - LEVEL 2";
             Skill2.text = "LOCKED - LEVEL 4";
             Skill3.text = "LOCKED - LEVEL 6";
             Skill4.text = "LOCKED - LEVEL 8";
         }
-        else if (Billy.Level < 4)
+        else if (PlayerRPG.Level < 4)
         {
             Skill1.text = "Fresh Corn - 5 IQ";
             Skill2.text = "LOCKED - LEVEL 4";
             Skill3.text = "LOCKED - LEVEL 6";
             Skill4.text = "LOCKED - LEVEL 8";
         }
-        else if (Billy.Level < 6)
+        else if (PlayerRPG.Level < 6)
         {
             Skill1.text = "Fresh Corn - 5 IQ";
             Skill2.text = "Billy Brawl - 10 IQ";
             Skill3.text = "LOCKED - LEVEL 6";
             Skill4.text = "LOCKED - LEVEL 8";
         }
-        else if (Billy.Level < 8)
+        else if (PlayerRPG.Level < 8)
         {
             Skill1.text = "Fresh Corn - 5 IQ";
             Skill2.text = "Billy Brawl - 10 IQ";
@@ -280,11 +280,11 @@ public class TurnSystem : MonoBehaviour
 
     public void OnCorn()
     {
-        if (Billy.Level < 2) 
+        if (PlayerRPG.Level < 2) 
         { 
             return; 
         }
-        if (Billy.currentIQ < 5)
+        if (PlayerRPG.currentIQ < 5)
         {
             return;
         }
@@ -298,23 +298,23 @@ public class TurnSystem : MonoBehaviour
 
     public IEnumerator CornHeal()
     {
-        NeutralSkillText.text = "Billy healed " + Billy.intellect + " HP!";
-        Billy.currentIQ -= 5;
-        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        NeutralSkillText.text = "Billy healed " + PlayerRPG.intellect + " HP!";
+        PlayerRPG.currentIQ -= 5;
+        PlayerSkillText.text = PlayerRPG.PlayerName + ": " + PlayerRPG.currentHP + " HP | " + PlayerRPG.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
-        Billy.Heal(Billy.intellect);
-        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        Billy.Heal(PlayerRPG.intellect);
+        PlayerSkillText.text = PlayerRPG.PlayerName + ": " + PlayerRPG.currentHP + " HP | " + PlayerRPG.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
         StartCoroutine(EnemyTurn());
     }
 
     public void OnBrawl()
     {
-        if (Billy.Level < 4)
+        if (PlayerRPG.Level < 4)
         {
             return;
         }
-        if (Billy.currentIQ < 10)
+        if (PlayerRPG.currentIQ < 10)
         {
             return;
         }
@@ -329,11 +329,11 @@ public class TurnSystem : MonoBehaviour
     public IEnumerator BillyBrawl()
     {
         NeutralSkillText.text = "BILLY BRAWL!";
-        Billy.currentIQ -= 10;
-        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
-        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().strength * 2);
+        PlayerRPG.currentIQ -= 10;
+        PlayerSkillText.text = PlayerRPG.PlayerName + ": " + PlayerRPG.currentHP + " HP | " + PlayerRPG.currentIQ + " IQ";
+        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(PlayerRPG.strength * 2);
         yield return new WaitForSeconds(1f);
-        NeutralSkillText.text = "Billy did " + (Billy.strength * 2) + " Damage!";
+        NeutralSkillText.text = "Billy did " + (PlayerRPG.strength * 2) + " Damage!";
         if (badguy.enemyHP > 0)
         {
             EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
@@ -358,11 +358,11 @@ public class TurnSystem : MonoBehaviour
 
     public void OnTalk()
     {
-        if (Billy.Level < 6)
+        if (PlayerRPG.Level < 6)
         {
             return;
         }
-        if (Billy.currentIQ < 15) 
+        if (PlayerRPG.currentIQ < 15) 
         {
             return;
         }
@@ -377,13 +377,13 @@ public class TurnSystem : MonoBehaviour
     public IEnumerator MeanTalk()
     {
         NeutralSkillText.text = "Billy used mean talk!";
-        Billy.currentIQ -= 15;
-        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerRPG.currentIQ -= 15;
+        PlayerSkillText.text = PlayerRPG.PlayerName + ": " + PlayerRPG.currentHP + " HP | " + PlayerRPG.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
         int meanie = Random.Range(0, 100);
         NeutralSkillText.text = "\"I hope you don't have that great of a day!\"";
         yield return new WaitForSeconds(2f);
-        if ((meanie + (Billy.Luck / 2)) < 90 )
+        if ((meanie + (PlayerRPG.Luck / 2)) < 90 )
         {
             NeutralSkillText.text = "The enemy was scared and escaped!";
             yield return new WaitForSeconds(1f);
@@ -399,11 +399,11 @@ public class TurnSystem : MonoBehaviour
 
     public void OnTruck()
     {
-        if (Billy.Level < 8)
+        if (PlayerRPG.Level < 8)
         {
             return;
         }
-        if (Billy.currentIQ < 20)
+        if (PlayerRPG.currentIQ < 20)
         {
             return;
         }
@@ -418,11 +418,11 @@ public class TurnSystem : MonoBehaviour
     public IEnumerator TruckTime()
     {
         NeutralSkillText.text = "Billy calls his Truck!";
-        Billy.currentIQ -= 20;
-        PlayerSkillText.text = Billy.PlayerName + ": " + Billy.currentHP + " HP | " + Billy.currentIQ + " IQ";
+        PlayerRPG.currentIQ -= 20;
+        PlayerSkillText.text = PlayerRPG.PlayerName + ": " + PlayerRPG.currentHP + " HP | " + PlayerRPG.currentIQ + " IQ";
         yield return new WaitForSeconds(1f);
         NeutralSkillText.text = "It does massive damage!";
-        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(player.GetComponent<PlayerRPG>().strength * 5);
+        bool isDead = enemy.GetComponent<EnemyRPG>().TakeDamage(PlayerRPG.strength * 5);
         if (badguy.enemyHP > 0)
         {
             EnemySkillText.text = badguy.EnemyName + ": " + badguy.enemyHP + " HP";
@@ -470,7 +470,7 @@ public class TurnSystem : MonoBehaviour
         int loser = Random.Range(0, 100);
         NeutralText.text = "You attempt to escape...";
         yield return new WaitForSeconds(2f);
-        if (loser < 50 + (2 * player.GetComponent<PlayerRPG>().Eva))
+        if (loser < 50 + (2 * PlayerRPG.Eva))
         {
             NeutralText.text = "You escaped the battle!";
             SceneManager.LoadScene("Ian Test Scene");
