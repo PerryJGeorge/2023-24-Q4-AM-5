@@ -7817,7 +7817,11 @@ MonoBehaviour:
   Interactable:
     serializedVersion: 2
     m_Bits: 0
+<<<<<<< HEAD
   SavePosition: {fileID: 1346791571}
+=======
+  SavePosition: {fileID: 1683949696}
+>>>>>>> 53002572bb22aeb7a72296aa5a977740ad8e88de
 --- !u!212 &1346791577
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8095,7 +8099,11 @@ Sprite:
   m_PhysicsShape: []
   m_Bones: []
   m_SpriteID: 
+<<<<<<< HEAD
 --- !u!1 &1652081418
+=======
+--- !u!1 &1683949696
+>>>>>>> 53002572bb22aeb7a72296aa5a977740ad8e88de
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8103,23 +8111,35 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 1652081419}
   - component: {fileID: 1652081422}
   - component: {fileID: 1652081421}
   - component: {fileID: 1652081420}
   m_Layer: 5
   m_Name: Button
+=======
+  - component: {fileID: 1683949697}
+  m_Layer: 0
+  m_Name: GameObject
+>>>>>>> 53002572bb22aeb7a72296aa5a977740ad8e88de
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!224 &1652081419
 RectTransform:
+=======
+--- !u!4 &1683949697
+Transform:
+>>>>>>> 53002572bb22aeb7a72296aa5a977740ad8e88de
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1652081418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -8364,6 +8384,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661769700}
   m_CullTransparentMesh: 1
+=======
+  m_GameObject: {fileID: 1683949696}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.76, y: 13.53, z: -0.20979597}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> 53002572bb22aeb7a72296aa5a977740ad8e88de
 --- !u!1 &1778785315
 GameObject:
   m_ObjectHideFlags: 0

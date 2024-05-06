@@ -1,32 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Block_Push : MonoBehaviour
 {
-
-    
     public GameObject player;
     public GameObject me;
+
     public void MoveMe()
     {
-        if (push_button.dir==1)
+        if (push_button.dir == 1)
         {
-            
-            me.transform.Translate(new Vector3(1,0,0));
+            me.transform.Translate(Vector3.right);
         }
-        if (push_button.dir == -1)
+        else if (push_button.dir == -1)
         {
-            me.transform.Translate(new Vector3(-1, 0, 0));
+            me.transform.Translate(Vector3.left);
         }
-        if (push_button.dir == 2)
+        else if (push_button.dir == 2)
         {
-            me.transform.Translate(new Vector3(0, 1, 0));
+            me.transform.Translate(Vector3.up);
         }
-        if (push_button.dir == -2)
+        else if (push_button.dir == -2)
         {
-            me.transform.Translate(new Vector3(0, -1, 0));
+            me.transform.Translate(Vector3.down);
         }
     }
 }
