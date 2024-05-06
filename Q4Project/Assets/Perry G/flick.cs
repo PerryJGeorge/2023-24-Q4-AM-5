@@ -8,6 +8,7 @@ public class flick : MonoBehaviour
     public Scene_change fade;
     public string Load;
     public float wait;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Invoke("LoadScene", wait);
