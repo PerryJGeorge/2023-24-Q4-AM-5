@@ -410,8 +410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyName: Robot
-  enemyHP: 15
-  enemydamage: 3
+  enemyHP: 30
+  enemydamage: 5
 --- !u!212 &78929889
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -522,19 +522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5f29503e1c3eb4699b046c1843cc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: Billy
-  MaxHP: 15
-  currentHP: 15
-  currentIQ: 5
-  maxIQ: 5
-  strength: 2
-  defense: 1
-  intellect: 3
-  Eva: 2
-  Luck: 3
-  Dollars: 30
-  EXP: 0
-  Level: 1
 --- !u!212 &154030963
 SpriteRenderer:
   m_ObjectHideFlags: 0
