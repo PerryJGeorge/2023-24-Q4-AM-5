@@ -43,6 +43,7 @@ public class TurnSystem : MonoBehaviour
     public bool cooldown;
     public bool isDead;
     public flick scenechange;
+    public flick SceneChange2;
 
     IEnumerator SetupBattle()
     {
@@ -187,6 +188,7 @@ public class TurnSystem : MonoBehaviour
         else if (state == BattleState.LOSE)
         {
             NeutralText.text = "You Lose!";
+            SceneChange2.UniqueExit();
         }
     }
 
@@ -470,6 +472,7 @@ public class TurnSystem : MonoBehaviour
         int loser = Random.Range(0, 100);
         NeutralText.text = "You attempt to escape...";
         yield return new WaitForSeconds(2f);
+        if (loser < 50 + (2 * PlayerRPG.Eva))
         if (loser < 50 + (2 * PlayerRPG.Eva))
         {
             NeutralText.text = "You escaped the battle!";
