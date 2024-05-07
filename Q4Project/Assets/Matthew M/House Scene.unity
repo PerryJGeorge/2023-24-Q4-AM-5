@@ -9441,6 +9441,19 @@ MonoBehaviour:
     - Billy Bill Bob!!
     - Are you finally awake!?
     - Good, because I have some things to tell you.
+    - 'First of all, if you''ve forgotten how to move, don''t worry, your old pal
+      The Rock is here to help you.
+
+'
+    - 'Just use WASD, thats what I always do when I try to eascape this tiny table.....
+      not that it works for me, but it will for you!
+
+'
+    - This is really important, I know it can be really awkward to interact with
+      people and things, so just press the 'E' Key, that way you can ineract with
+      everyone and anything you want.
+    - Good luck on your day Billy, and remember, don't forget to come back and talk
+      to me... I'll Make sure to tell you all this stuff all over again, how fun!
   characterIndex: 0
 --- !u!61 &1897668618
 BoxCollider2D:
