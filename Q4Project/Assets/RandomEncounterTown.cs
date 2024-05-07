@@ -15,7 +15,7 @@ public class RandomEncounterTown : MonoBehaviour
     IEnumerator CheckForScene()
     {
         yield return new WaitForSeconds(1f);
-        if (Random.Range(1, 101) <= 10)
+        if (Random.Range(1, 101) <= 15)
         {
             if (player.GetComponent<Rigidbody2D>().velocity.x > 0 || player.GetComponent<Rigidbody2D>().velocity.y > 0)
             {
