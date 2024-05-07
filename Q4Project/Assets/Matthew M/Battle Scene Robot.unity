@@ -1482,7 +1482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 63082262}
-  Load: Puzzle_Building_F1
+  Load: BILLY
   wait: 2
 --- !u!1 &497701738
 GameObject:
@@ -3104,8 +3104,8 @@ MonoBehaviour:
   badguy: {fileID: 78929888}
   cooldown: 0
   isDead: 0
-  scenechange: {fileID: 0}
-  SceneChange2: {fileID: 0}
+  scenechange: {fileID: 497156121}
+  SceneChange2: {fileID: 1233570123}
 --- !u!4 &782447064
 Transform:
   m_ObjectHideFlags: 0
